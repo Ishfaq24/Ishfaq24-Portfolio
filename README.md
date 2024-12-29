@@ -12,3 +12,5 @@ Bootstrap<br>
 AOS Library<br>
 FontAwesome<br>
 Chart.js<br>
+Try out link:
+https://ishfaq24.github.io/Ishfaq24-Portfolio/
