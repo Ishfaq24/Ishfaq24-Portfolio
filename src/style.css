@@ -1,0 +1,178 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Dark by default — premium black canvas */
+  --background: oklch(0.14 0.005 240);
+  --foreground: oklch(0.98 0 0);
+
+  --card: oklch(0.17 0.006 240);
+  --card-foreground: oklch(0.98 0 0);
+  --popover: oklch(0.16 0.006 240);
+  --popover-foreground: oklch(0.98 0 0);
+
+  /* Accent: vibrant emerald green */
+  --primary: oklch(0.78 0.18 152);
+  --primary-foreground: oklch(0.14 0.005 240);
+
+  --secondary: oklch(0.22 0.008 240);
+  --secondary-foreground: oklch(0.98 0 0);
+  --muted: oklch(0.22 0.008 240);
+  --muted-foreground: oklch(0.68 0.01 240);
+  --accent: oklch(0.78 0.18 152);
+  --accent-foreground: oklch(0.14 0.005 240);
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(1 0 0 / 8%);
+  --input: oklch(1 0 0 / 10%);
+  --ring: oklch(0.78 0.18 152 / 60%);
+
+  --chart-1: oklch(0.78 0.18 152);
+  --chart-2: oklch(0.65 0.12 200);
+  --chart-3: oklch(0.7 0.15 130);
+  --chart-4: oklch(0.6 0.1 180);
+  --chart-5: oklch(0.8 0.12 100);
+
+  --sidebar: oklch(0.14 0.005 240);
+  --sidebar-foreground: oklch(0.98 0 0);
+  --sidebar-primary: oklch(0.78 0.18 152);
+  --sidebar-primary-foreground: oklch(0.14 0.005 240);
+  --sidebar-accent: oklch(0.22 0.008 240);
+  --sidebar-accent-foreground: oklch(0.98 0 0);
+  --sidebar-border: oklch(1 0 0 / 8%);
+  --sidebar-ring: oklch(0.78 0.18 152);
+
+  /* Effects */
+  --gradient-radial: radial-gradient(
+    ellipse 80% 50% at 50% -10%,
+    color-mix(in oklab, var(--primary) 18%, transparent),
+    transparent 70%
+  );
+  --gradient-text: linear-gradient(
+    180deg,
+    var(--foreground) 0%,
+    color-mix(in oklab, var(--foreground) 55%, transparent) 100%
+  );
+  --shadow-glow: 0 0 60px -10px color-mix(in oklab, var(--primary) 50%, transparent);
+  --shadow-card: 0 1px 0 0 oklch(1 0 0 / 4%) inset, 0 10px 40px -20px oklch(0 0 0 / 50%);
+}
+
+.light {
+  --background: oklch(0.99 0 0);
+  --foreground: oklch(0.14 0.005 240);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.14 0.005 240);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.14 0.005 240);
+  --primary: oklch(0.58 0.16 152);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.96 0.005 240);
+  --secondary-foreground: oklch(0.14 0.005 240);
+  --muted: oklch(0.96 0.005 240);
+  --muted-foreground: oklch(0.45 0.01 240);
+  --accent: oklch(0.58 0.16 152);
+  --accent-foreground: oklch(0.99 0 0);
+  --border: oklch(0 0 0 / 8%);
+  --input: oklch(0 0 0 / 10%);
+  --ring: oklch(0.58 0.16 152 / 50%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-display);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: color-mix(in oklab, var(--primary) 35%, transparent);
+    color: var(--foreground);
+  }
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility text-gradient {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility hero-radial {
+  background: var(--gradient-radial);
+}
+
+@utility grid-bg {
+  background-image:
+    linear-gradient(to right, oklch(1 0 0 / 4%) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(1 0 0 / 4%) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 60% 60% at 50% 40%, black 30%, transparent 80%);
+}
+
+@utility glow-ring {
+  box-shadow:
+    0 0 0 1px oklch(1 0 0 / 8%),
+    0 0 80px -20px color-mix(in oklab, var(--primary) 60%, transparent);
+}
+
+@utility noise {
+  position: relative;
+}
+@utility noise {
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.04;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+}
+
