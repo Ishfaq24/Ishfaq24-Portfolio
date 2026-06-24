@@ -2,15 +2,64 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { Section, SectionHeader } from "./Section";
 import { Calendar, Github, Linkedin, Mail, Send } from "lucide-react";
+import { toast } from "sonner";
 
 export function Contact() {
   const [sent, setSent] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    if (isSubmitting) return;
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          email: formData.get("email"),
+          message: formData.get("message"),
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Contact request failed");
+      }
+
+      setSent(true);
+      form.reset();
+      toast.success("Message sent", {
+        description: "Thanks for reaching out. I'll reply within 24 hours.",
+      });
+    } catch {
+      toast.error("Message not sent", {
+        description:
+          "Please try again, or email me directly at ishfaqnazir24@gmail.com.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
 
   return (
     <Section id="contact">
       <SectionHeader
         eyebrow="08 — Contact"
-        title={<>Let's build something <span className="text-primary">worth shipping</span>.</>}
+        title={
+          <>
+            Let's build something{" "}
+            <span className="text-primary">worth shipping</span>.
+          </>
+        }
         description="Open to AI Engineering and Full Stack roles, paid contracts, and collaborations on serious products."
       />
 
@@ -29,27 +78,46 @@ export function Contact() {
             </p>
             <ul className="mt-6 space-y-3 text-sm">
               <li>
-                <a href="mailto:ishfaqnazir24@gmail.com" className="group flex items-center gap-3 text-foreground">
+                <a
+                  href="mailto:ishfaqnazir24@gmail.com"
+                  className="group flex items-center gap-3 text-foreground"
+                >
                   <span className="grid h-9 w-9 place-items-center rounded-lg border border-border bg-background/40 text-primary">
                     <Mail className="h-4 w-4" />
                   </span>
-                  <span className="group-hover:text-primary">ishfaqnazir24@gmail.com</span>
+                  <span className="group-hover:text-primary">
+                    ishfaqnazir24@gmail.com
+                  </span>
                 </a>
               </li>
               <li>
-                <a href="https://github.com/ishfaq24" target="_blank" rel="noreferrer noopener" className="group flex items-center gap-3 text-foreground">
+                <a
+                  href="https://github.com/ishfaq24"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="group flex items-center gap-3 text-foreground"
+                >
                   <span className="grid h-9 w-9 place-items-center rounded-lg border border-border bg-background/40 text-primary">
                     <Github className="h-4 w-4" />
                   </span>
-                  <span className="group-hover:text-primary">github.com/ishfaq24</span>
+                  <span className="group-hover:text-primary">
+                    github.com/ishfaq24
+                  </span>
                 </a>
               </li>
               <li>
-                <a href="https://linkedin.com/in/ishfaq24" target="_blank" rel="noreferrer noopener" className="group flex items-center gap-3 text-foreground">
+                <a
+                  href="https://linkedin.com/in/ishfaq24"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="group flex items-center gap-3 text-foreground"
+                >
                   <span className="grid h-9 w-9 place-items-center rounded-lg border border-border bg-background/40 text-primary">
                     <Linkedin className="h-4 w-4" />
                   </span>
-                  <span className="group-hover:text-primary">linkedin.com/in/ishfaq24</span>
+                  <span className="group-hover:text-primary">
+                    linkedin.com/in/ishfaq24
+                  </span>
                 </a>
               </li>
             </ul>
@@ -76,16 +144,14 @@ export function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          onSubmit={(e) => {
-            e.preventDefault();
-            setSent(true);
-          }}
+          onSubmit={handleSubmit}
           className="rounded-2xl border border-border bg-card/60 p-6 backdrop-blur"
         >
           <div className="grid gap-4">
             <Field label="Name" id="name">
               <input
                 id="name"
+                name="name"
                 required
                 maxLength={100}
                 placeholder="Your name"
@@ -95,6 +161,7 @@ export function Contact() {
             <Field label="Email" id="email">
               <input
                 id="email"
+                name="email"
                 type="email"
                 required
                 maxLength={255}
@@ -105,6 +172,7 @@ export function Contact() {
             <Field label="Message" id="message">
               <textarea
                 id="message"
+                name="message"
                 required
                 maxLength={1000}
                 rows={5}
@@ -120,10 +188,10 @@ export function Contact() {
             </p>
             <button
               type="submit"
-              disabled={sent}
+              disabled={isSubmitting}
               className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-transform hover:scale-[1.03] disabled:opacity-60"
             >
-              {sent ? "Sent" : "Send message"}
+              {isSubmitting ? "Sending..." : sent ? "Sent" : "Send message"}
               <Send className="h-4 w-4" />
             </button>
           </div>
