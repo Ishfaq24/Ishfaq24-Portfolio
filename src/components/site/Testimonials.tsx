@@ -1,61 +1,61 @@
 import { motion } from "framer-motion";
 import { Section, SectionHeader } from "./Section";
 
-const achievements = [
+const highlights = [
   {
     title: "Founder & Community Lead",
     organization: "HackHub24",
     description:
-      "Built and managed a developer community focused on programming, open source, AI, and career growth. Organized workshops, mentoring sessions, and technical discussions for students.",
+      "Built and scaled a developer community of 100+ students focused on Generative AI, open source, and full-stack systems. Organized 12+ technical workshops and mentored 30+ production open-source PRs.",
   },
   {
-    title: "Backend Developer",
-    organization: "Vipthra Technologies",
+    title: "AI & Multimodal Systems",
+    organization: "Prompt2Render",
     description:
-      "Developing scalable backend services, REST APIs, authentication systems, and database solutions while contributing to production-ready applications.",
+      "Architected an end-to-end multimodal agent pipeline combining Gemini storyboarding, closed-loop layout critics, Kokoro neural TTS, and Whisper forced alignment for code animation.",
   },
   {
-    title: "Backend Developer",
+    title: "Software Engineer",
     organization: "NexGen Developers",
     description:
-      "Worked on backend architecture, API development, database design, and performance optimization for web applications.",
+      "Engineered production RESTful APIs, authentication workflows, and backend services while integrating real-time machine learning inference systems.",
   },
   {
-    title: "Open Source Advocate",
-    organization: "HackHub24",
+    title: "Software Engineer",
+    organization: "Vipthra Technologies",
     description:
-      "Conducted Git and GitHub awareness sessions to help students begin their open-source journey and contribute to real-world projects.",
+      "Developed high-throughput backend services and database architectures, optimizing PostgreSQL and MongoDB queries for sub-100ms response times.",
   },
   {
-    title: "AI & Machine Learning Enthusiast",
-    organization: "Personal Projects",
+    title: "Explainable AI & Machine Learning",
+    organization: "Loan Risk AI & Research",
     description:
-      "Built projects involving computer vision, machine learning, educational technology, and AI-powered learning systems.",
+      "Trained calibrated machine learning models coupled with SHAP (SHapley Additive exPlanations) to deliver transparent, data-driven financial decision-making.",
   },
   {
-    title: "Full Stack Developer",
-    organization: "Personal Projects",
+    title: "Computer Vision & Human-Computer Interaction",
+    organization: "AirCanvas & MediaPipe",
     description:
-      "Designed and developed multiple full-stack applications including AlgoArena, DevVerse, ShareStore, EyeAmHere, and O-Management.",
+      "Engineered touchless virtual whiteboards utilizing 21-point hand landmark tracking and low-latency WebSocket synchronization for multi-user collaboration.",
   },
 ];
 
 export function Testimonials() {
   return (
-    <Section id="achievements">
+    <Section id="impact">
       <SectionHeader
-        eyebrow="07 — Experience & Impact"
+        eyebrow="07 — Impact & Leadership"
         title={
           <>
             Building, learning, and creating
             <span className="text-primary"> real impact.</span>
           </>
         }
-        description="A snapshot of my professional experience, community contributions, and technical journey."
+        description="A snapshot of professional engineering experience, community leadership, and technical journey across artificial intelligence and scalable software."
       />
 
       <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-        {achievements.map((item, i) => (
+        {highlights.map((item, i) => (
           <motion.div
             key={item.title}
             initial={{ opacity: 0, y: 20 }}

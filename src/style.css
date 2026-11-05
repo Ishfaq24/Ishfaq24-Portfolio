@@ -33,10 +33,12 @@
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 }
 
-:root {
+:root,
+.dark,
+[data-theme="dark"] {
   --radius: 0.75rem;
 
-  /* Dark by default — premium black canvas */
+  /* Dark theme — premium black/carbon canvas */
   --background: oklch(0.14 0.005 240);
   --foreground: oklch(0.98 0 0);
 
@@ -91,24 +93,54 @@
   --shadow-card: 0 1px 0 0 oklch(1 0 0 / 4%) inset, 0 10px 40px -20px oklch(0 0 0 / 50%);
 }
 
-.light {
+.light,
+[data-theme="light"] {
+  /* Crisp clean white canvas */
   --background: oklch(0.99 0 0);
-  --foreground: oklch(0.14 0.005 240);
+  --foreground: oklch(0.16 0.01 240);
+
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.14 0.005 240);
+  --card-foreground: oklch(0.16 0.01 240);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.14 0.005 240);
-  --primary: oklch(0.58 0.16 152);
+  --popover-foreground: oklch(0.16 0.01 240);
+
+  /* Deep emerald accent for light theme - readable and rich */
+  --primary: oklch(0.50 0.17 152);
   --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.96 0.005 240);
-  --secondary-foreground: oklch(0.14 0.005 240);
-  --muted: oklch(0.96 0.005 240);
-  --muted-foreground: oklch(0.45 0.01 240);
-  --accent: oklch(0.58 0.16 152);
+
+  --secondary: oklch(0.95 0.005 240);
+  --secondary-foreground: oklch(0.16 0.01 240);
+  --muted: oklch(0.94 0.005 240);
+  --muted-foreground: oklch(0.42 0.01 240);
+  --accent: oklch(0.50 0.17 152);
   --accent-foreground: oklch(0.99 0 0);
-  --border: oklch(0 0 0 / 8%);
-  --input: oklch(0 0 0 / 10%);
-  --ring: oklch(0.58 0.16 152 / 50%);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0 0 0 / 10%);
+  --input: oklch(0 0 0 / 12%);
+  --ring: oklch(0.50 0.17 152 / 50%);
+
+  --sidebar: oklch(0.98 0 0);
+  --sidebar-foreground: oklch(0.16 0.01 240);
+  --sidebar-primary: oklch(0.50 0.17 152);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.95 0.005 240);
+  --sidebar-accent-foreground: oklch(0.16 0.01 240);
+  --sidebar-border: oklch(0 0 0 / 10%);
+  --sidebar-ring: oklch(0.50 0.17 152);
+
+  --gradient-radial: radial-gradient(
+    ellipse 80% 50% at 50% -10%,
+    color-mix(in oklab, var(--primary) 12%, transparent),
+    transparent 70%
+  );
+  --gradient-text: linear-gradient(
+    180deg,
+    var(--foreground) 0%,
+    color-mix(in oklab, var(--foreground) 70%, transparent) 100%
+  );
+  --shadow-glow: 0 0 50px -10px color-mix(in oklab, var(--primary) 30%, transparent);
+  --shadow-card: 0 1px 3px 0 oklch(0 0 0 / 5%), 0 10px 25px -10px oklch(0 0 0 / 10%);
 }
 
 @layer base {
@@ -125,6 +157,7 @@
     font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    transition: background-color 0.25s ease, color 0.25s ease;
   }
   ::selection {
     background: color-mix(in oklab, var(--primary) 35%, transparent);
@@ -149,16 +182,16 @@
 
 @utility grid-bg {
   background-image:
-    linear-gradient(to right, oklch(1 0 0 / 4%) 1px, transparent 1px),
-    linear-gradient(to bottom, oklch(1 0 0 / 4%) 1px, transparent 1px);
+    linear-gradient(to right, color-mix(in oklab, var(--foreground) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--foreground) 6%, transparent) 1px, transparent 1px);
   background-size: 56px 56px;
   mask-image: radial-gradient(ellipse 60% 60% at 50% 40%, black 30%, transparent 80%);
 }
 
 @utility glow-ring {
   box-shadow:
-    0 0 0 1px oklch(1 0 0 / 8%),
-    0 0 80px -20px color-mix(in oklab, var(--primary) 60%, transparent);
+    0 0 0 1px var(--border),
+    0 0 80px -20px color-mix(in oklab, var(--primary) 50%, transparent);
 }
 
 @utility noise {

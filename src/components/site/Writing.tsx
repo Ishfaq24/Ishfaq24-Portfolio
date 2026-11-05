@@ -4,40 +4,40 @@ import { Section, SectionHeader } from "./Section";
 
 const posts = [
   {
-    cat: "AI",
-    title: "Building AlgoArena: My Vision for an AI-Powered Learning Platform",
+    cat: "Generative AI",
+    title: "Building Prompt2Render: Autonomous Storyboarding & Manim Code Animation",
     read: "10 min",
-    link: "/blog/building-algoarena",
+    link: "https://github.com/Ishfaq24",
   },
   {
-    cat: "Backend",
-    title: "Lessons Learned While Building Scalable REST APIs with Node.js",
+    cat: "Explainable AI",
+    title: "Credit Risk Modeling: Explaining Machine Learning Decisions with SHAP",
     read: "8 min",
-    link: "/blog/scalable-nodejs-apis",
+    link: "https://github.com/Ishfaq24/loan-approval-system",
   },
   {
-    cat: "Community",
-    title: "How I Built HackHub24 and Grew a Developer Community",
-    read: "6 min",
-    link: "/blog/building-hackhub24",
-  },
-  {
-    cat: "Machine Learning",
-    title: "From Linear Regression to LLMs: My AI Learning Journey",
-    read: "12 min",
-    link: "/blog/ai-learning-journey",
+    cat: "Computer Vision",
+    title: "AirCanvas: Low-Latency Hand Gesture Recognition with MediaPipe & WebSockets",
+    read: "7 min",
+    link: "https://github.com/Ishfaq24/Virtual-Writing-Board",
   },
   {
     cat: "System Design",
-    title: "Designing Multi-User Applications: Rooms, Authentication & Scale",
+    title: "Architecting Scalable REST APIs with Node.js, FastAPI & PostgreSQL",
     read: "9 min",
-    link: "/blog/system-design-multi-user-apps",
+    link: "https://github.com/Ishfaq24",
   },
   {
-    cat: "Open Source",
-    title: "Why Every Student Should Start Contributing to Open Source",
-    read: "5 min",
-    link: "/blog/open-source-for-students",
+    cat: "Community",
+    title: "How I Built HackHub24 and Mentored 100+ Student Developers in Open Source",
+    read: "6 min",
+    link: "https://github.com/Ishfaq24",
+  },
+  {
+    cat: "Machine Learning",
+    title: "From Neural Fundamentals to Multimodal AI Agent Architectures",
+    read: "12 min",
+    link: "https://github.com/Ishfaq24",
   },
 ];
 
@@ -45,17 +45,17 @@ export function Writing() {
   return (
     <Section id="writing">
       <SectionHeader
-        eyebrow="05 — Writing"
+        eyebrow="05 — Writing & Insights"
         title={
           <>
             Sharing what I learn about{" "}
             <span className="text-primary">
-              AI, Backend Development & Building Products
+              AI Systems, Backend Architecture & Building Products
             </span>
             .
           </>
         }
-        description="Thoughts, lessons, and experiences from my journey as a software engineer, community builder, and AI enthusiast."
+        description="Engineering deep dives, architecture teardowns, and lessons learned while architecting AI pipelines and scaling developer communities."
       />
 
       <div className="grid gap-4 md:grid-cols-2">
@@ -63,6 +63,8 @@ export function Writing() {
           <motion.a
             key={post.title}
             href={post.link}
+            target="_blank"
+            rel="noreferrer noopener"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
@@ -92,9 +94,8 @@ export function Writing() {
 
       <div className="mt-10 rounded-2xl border border-border bg-card/30 p-6 text-center">
         <p className="text-sm text-muted-foreground">
-          More articles coming soon. I regularly write about AI, Machine
-          Learning, Backend Development, System Design, Open Source, and lessons
-          learned while building products and communities.
+          More technical articles and engineering deep dives in progress. I regularly write about Generative AI,
+          Agentic Pipelines, Machine Learning Systems, High-Performance Backends, and Open-Source engineering.
         </p>
       </div>
     </Section>

@@ -4,23 +4,76 @@ import { Section, SectionHeader } from "./Section";
 const groups = [
   {
     title: "AI & Machine Learning",
-    items: ["Python", "PyTorch", "TensorFlow", "Transformers", "LangChain", "RAG", "Vector DBs", "LLM Fine-Tuning", "NLP", "Computer Vision"],
+    items: [
+      "Python",
+      "TensorFlow",
+      "PyTorch",
+      "Scikit-Learn",
+      "OpenCV",
+      "MediaPipe",
+      "SHAP (XAI)",
+      "NumPy",
+      "Pandas",
+    ],
   },
   {
-    title: "Backend",
-    items: ["Node.js", "Express.js", "FastAPI", "REST APIs", "Auth", "WebSockets"],
+    title: "Generative AI & LLMs",
+    items: [
+      "Gemini API",
+      "OpenAI API",
+      "LangChain",
+      "RAG Systems",
+      "Agent Pipelines",
+      "Whisper ASR",
+      "Kokoro TTS",
+      "Vector DBs",
+    ],
   },
   {
-    title: "Frontend",
-    items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    title: "Backend & Systems",
+    items: [
+      "FastAPI",
+      "Node.js",
+      "Express.js",
+      "RESTful APIs",
+      "WebSockets",
+      "Microservices",
+      "JWT Auth",
+    ],
   },
   {
-    title: "Databases",
-    items: ["MongoDB", "PostgreSQL", "Supabase", "Redis"],
+    title: "Frontend Engineering",
+    items: [
+      "React 19",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+      "HTML5 Canvas",
+    ],
   },
   {
-    title: "DevOps",
-    items: ["Docker", "GitHub Actions", "Vercel", "AWS"],
+    title: "Databases & Storage",
+    items: [
+      "PostgreSQL",
+      "MongoDB",
+      "MySQL",
+      "Redis",
+      "Supabase",
+      "Cloudinary",
+    ],
+  },
+  {
+    title: "DevOps & Tooling",
+    items: [
+      "Docker",
+      "Git & GitHub",
+      "FFmpeg",
+      "Manim",
+      "Linux / Bash",
+      "Postman",
+      "Vercel",
+    ],
   },
 ];
 
@@ -29,8 +82,8 @@ export function Skills() {
     <Section id="skills">
       <SectionHeader
         eyebrow="02 — Toolkit"
-        title={<>The stack behind the <span className="text-primary">work</span>.</>}
-        description="A pragmatic toolbox curated for shipping real systems — from model layer to UI."
+        title={<>The stack behind the <span className="text-primary">systems</span>.</>}
+        description="A specialized toolkit curated for architecting intelligent systems — from foundational ML models and LLM agents to robust cloud infrastructure and reactive frontends."
       />
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
