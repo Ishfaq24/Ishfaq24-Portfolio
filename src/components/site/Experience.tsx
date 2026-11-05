@@ -3,49 +3,46 @@ import { Section, SectionHeader } from "./Section";
 
 const timeline = [
   {
-    period: "May 2026 — Present",
-    role: "Backend Developer",
-    org: "Vipthra Technologies",
-    points: [
-      "Designed and developed scalable RESTful APIs using Node.js and Express.js",
-      "Built backend services handling high traffic and concurrent requests",
-      "Implemented JWT auth and role-based access control across services",
-      "Optimized database queries and app performance for faster response times",
-      "Collaborated with frontend teams to ship seamless API integrations",
-      "Worked with MongoDB and cloud services for data management and deployment",
-    ],
-  },
-  {
-    period: "2025 — Present",
-    role: "Backend Developer",
+    period: "March 2026 — Present",
+    role: "Software Engineer",
     org: "NexGen Developers",
     points: [
-      "Developed and maintained RESTful APIs powering web applications",
-      "Designed scalable backend architectures for growing user bases",
-      "Built secure authentication, authorization and session management",
-      "Integrated third-party services, databases and external APIs",
-      "Improved reliability through error handling, validation and perf tuning",
-      "Participated in code reviews and engineering best practices",
+      "Engineered scalable RESTful APIs with Node.js and FastAPI powering high-traffic web applications",
+      "Collaborated with frontend teams to integrate real-time data exchange, state management, and backend logic",
+      "Integrated machine learning pipelines and third-party APIs with structured validation and error handling",
+      "Wrote comprehensive unit and integration tests to ensure code reliability, security, and maintainability",
     ],
   },
   {
-    period: "2024 — Now",
+    period: "May 2026 — Present",
+    role: "Software Engineer",
+    org: "Vipthra Technologies",
+    points: [
+      "Architected high-throughput backend services and REST APIs handling concurrent requests with low latency",
+      "Implemented secure JWT authentication, session handling, and role-based access control (RBAC)",
+      "Optimized PostgreSQL and MongoDB queries, indexing strategies, and caching layers for sub-100ms response times",
+      "Collaborated with cross-functional engineering teams to ship production-ready enterprise features",
+    ],
+  },
+  {
+    period: "2024 — Present",
     role: "Founder & Community Lead",
     org: "HackHub24",
     points: [
-      "Built a developer community of 100+ engineering students",
-      "Organized 12+ workshops on AI, system design and open source",
-      "Launched the OSS Awareness Program — 30+ first PRs merged",
-      "Mentored students into hackathon wins and internships",
+      "Founded and grew an active developer community of 100+ engineering students across Jammu & Kashmir",
+      "Organized 12+ hands-on technical workshops covering Generative AI, system architecture, and open-source contribution",
+      "Spearheaded the Open Source Awareness initiative, mentoring students to successfully merge 30+ production PRs",
+      "Mentored community members into multiple hackathon victories and software engineering internships",
     ],
   },
   {
-    period: "Ongoing",
-    role: "B.Tech, Computer Science Engineering",
-    org: "Engineering College",
+    period: "December 2022 — December 2026",
+    role: "B.Tech, Computer Science & Engineering (CGPA: 9.2)",
+    org: "GCET Kashmir (Government College of Engineering & Technology)",
     points: [
-      "Focus areas: AI, systems design, compilers, network security",
-      "160+ day continuous coding streak",
+      "Top academic standing with a 9.2 CGPA specializing in Artificial Intelligence, System Architecture, and Algorithms",
+      "Active competitive coder and project lead across multiple hackathon victories (GCET 2025, MLH, Front-End Frenzy)",
+      "160+ day continuous engineering and open-source coding streak",
     ],
   },
 ];
@@ -55,7 +52,7 @@ export function Experience() {
     <Section id="experience">
       <SectionHeader
         eyebrow="04 — Experience"
-        title={<>Building <span className="text-primary">in public</span> since day one.</>}
+        title={<>Building <span className="text-primary">in public</span> and shipping in production.</>}
       />
 
       <div className="relative mx-auto max-w-3xl">
